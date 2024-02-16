@@ -1,4 +1,4 @@
-﻿
+﻿@model User
 @{
     ViewBag.Title = "Create";
 }
@@ -9,11 +9,15 @@
     @using (Html.BeginForm())
     {
         <label>Username</label>
-            <input type="text" name="Username" class="form-control" value="" />
+        @Html.TextBoxFor(m => m.username, new { @class = "form-control"})
+            @*<input type="text" name="Username" class="form-control" value="" />*@
         <label>Password</label>
-            <input type="password" name="Password" class="form-control" value="" />
+        @Html.PasswordFor(m => m.password, new { @class = "form-control" })
+            @*<input type="password" name="Password" class="form-control" value="" />/>*@
            <br />
         <input type="submit" name="submit" class="btn btn-success" value="Save" />
+        <br />
+        @ViewBag.Msg
     }
     
 

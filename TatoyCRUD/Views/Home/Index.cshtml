@@ -1,10 +1,18 @@
-﻿
+﻿@model IEnumerable<User>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>List of Users</h2>
 <hr />
+@if (!String.IsNullOrEmpty(TempData["msg"] as String))
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+        
+}
 <div class="row">
     <div class="col-lg-6">
         <table class="table table-striped">
@@ -13,6 +21,17 @@
                 <th>Username</th>
                 <th>Action</th>
             </tr>
+            @foreach (var u in Model)
+            {
+                <tr>
+                    <th>@u.id</th>
+                    <th>@u.username</th>
+                    <th>
+                          <a href="~/Home/Update/@u.id">Update</a> |                          
+                          <a href="~/Home/Remove/@u.id">Remove</a>
+                    </th>
+                </tr>
+            }
         </table>
     </div>
 </div>
